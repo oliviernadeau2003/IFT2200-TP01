@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -110,7 +111,19 @@ public class PlayerController : MonoBehaviour
         Vector3 rotationSouris = new Vector3(rotationX, rotationY, 0) * vitesseRotation;
         Vector3 rotationActuelle = transform.eulerAngles;
 
-        return Quaternion.Euler(rotationActuelle + rotationSouris);
+        Vector3 rotationNouvelle = new Vector3();
+        rotationNouvelle = rotationActuelle + rotationSouris;
+
+        if (rotationNouvelle.x > 180f)
+        {
+            rotationNouvelle.x = Mathf.Max(rotationNouvelle.x - 360f, -90f);
+        }
+        else
+        {
+            rotationNouvelle.x = Mathf.Min(rotationNouvelle.x, 90f);
+        }
+
+        return Quaternion.Euler(rotationNouvelle);
     }
 
     Vector3 GestionTerrain()
