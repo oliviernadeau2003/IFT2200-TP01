@@ -43,5 +43,6 @@ public class Parcour : MonoBehaviour
     {
         objetAccueil.SetActive(true);
         objetParcour.SetActive(false);
+        indexBorne = 0;
     }
 }
