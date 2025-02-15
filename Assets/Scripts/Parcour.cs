@@ -1,7 +1,9 @@
+using System;
 using UnityEngine;
 
 public class Parcour : MonoBehaviour
 {
+    private Transform positionInitial;
     public Transform[] Bornes = new Transform[14];
 
     public GameObject objetParcour;
@@ -11,6 +13,11 @@ public class Parcour : MonoBehaviour
     public float[] vitessesRotation = new float[14]; // Tableau des vitesses de rotation
     public float distanceSeuil = 0.3f; // Distance pour changer de borne
     private int indexBorne = 0;
+
+    void Start()
+    {
+        positionInitial = transform;
+    }
 
     void Update()
     {
@@ -42,7 +49,9 @@ public class Parcour : MonoBehaviour
     void RetourAccueil()
     {
         objetAccueil.SetActive(true);
-        objetParcour.SetActive(false);
+        transform.position = positionInitial.position;
+        transform.rotation = positionInitial.rotation;
         indexBorne = 0;
+        objetParcour.SetActive(false);
     }
 }
