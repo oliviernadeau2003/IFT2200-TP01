@@ -2,14 +2,14 @@ using UnityEngine;
 
 public class Parcour : MonoBehaviour
 {
-    public Transform[] Bornes = new Transform[5];
+    public Transform[] Bornes = new Transform[14];
 
     public GameObject objetParcour;
     public GameObject objetAccueil;
 
-    public float[] vitessesDeplacement; // Tableau des vitesses de déplacement
-    public float[] vitessesRotation; // Tableau des vitesses de rotation
-    public float distanceSeuil = 0.5f; // Distance pour changer de borne
+    public float[] vitessesDeplacement = new float[14]; // Tableau des vitesses de déplacement
+    public float[] vitessesRotation = new float[14]; // Tableau des vitesses de rotation
+    public float distanceSeuil = 0.3f; // Distance pour changer de borne
     private int indexBorne = 0;
 
     void Update()
